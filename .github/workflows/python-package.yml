@@ -20,6 +20,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run pre-commit
       run: |
+        pre-commit autoupdate
         pre-commit run -a
     - name: Run pytest
       run: |
