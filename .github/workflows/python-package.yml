@@ -1,14 +1,26 @@
-name: pre-commit
+name: CI
 
 on:
-  pull_request:
   push:
     branches: [main]
 
 jobs:
-  pre-commit:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-    - uses: pre-commit/action@v2.0.3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.10"
+    - name: Install Dependencies
+      run: |
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Run pre-commit
+      run: |
+        pre-commit run -a
+    - name: Run pytest
+      run: |
+        pytest
