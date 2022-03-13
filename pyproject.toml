@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "rando_numbers"
+version = "0.0.1"
+description = "simple random number function using secrets"
+authors = ["Mr.Cartoonster <mrcartoonster@fastmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0"
+pytest-clarity = "^1.0.1"
+pytest-emoji = "^0.2.0"
+pytest-watch = "^4.2.0"
+pytest-instafail = "^0.4.2"
+ipython = "^8.1.1"
+pre-commit = "^2.17.0"
+rich = "^12.0.0"
+prettyprinter = "^0.18.0"
+black = "22.1.0"
+isort = "^5.10.1"
+
+[tool.pytest.ini_options]
+addopts = "-rssxX -l --tb=short --strict-markers --emoji -vv --diff-symbols"
+xfail_strict = "True"
+markers = [
+  "smoke",
+  "fire",
+  "verify"
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
