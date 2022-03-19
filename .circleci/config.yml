@@ -12,3 +12,9 @@ jobs:
       - run:
           command: |
             pytest -v
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build
