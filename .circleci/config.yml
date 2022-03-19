@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/random_numbers
+    docker:
+      - image: cimg/python:3.10.1
+    steps:
+      - checkout
+      - run:
+          command: |
+            pip install -r requirements.txt
+      - run:
+          command: |
+            pytest -v
